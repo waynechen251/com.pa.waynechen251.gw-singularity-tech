@@ -1,0 +1,86 @@
+{
+  "version": "1.0.0",
+  "project": "Planetary Annihilation Modding Knowledge Base",
+  "updated_at": "2026-05-09",
+  "entrypoints": [
+    {
+      "id": "agent-playbook",
+      "path": ".agent/agent-playbook.md",
+      "intents": [
+        "route_task",
+        "choose_workflow",
+        "standard_output"
+      ],
+      "tags": ["entry", "router", "playbook"]
+    },
+    {
+      "id": "pa-core-rules",
+      "path": ".agent/knowledge/pa-modding-core.md",
+      "intents": [
+        "create_mod",
+        "modinfo",
+        "mod_structure",
+        "client_or_server_decision"
+      ],
+      "tags": ["core", "rules", "modinfo", "structure"]
+    },
+    {
+      "id": "pa-ui-api",
+      "path": ".agent/knowledge/ui-and-api.md",
+      "intents": [
+        "ui_modding",
+        "scene_hook",
+        "api_usage",
+        "chat_alert_like_mod"
+      ],
+      "tags": ["ui", "api", "coherent", "knockout", "scenes"]
+    },
+    {
+      "id": "workflow-client-ui",
+      "path": ".agent/workflows/create-client-ui-mod.md",
+      "intents": [
+        "build_client_ui_mod",
+        "new_game_scene_mod",
+        "settings_scene_mod"
+      ],
+      "tags": ["workflow", "client", "ui"]
+    },
+    {
+      "id": "workflow-server-unit",
+      "path": ".agent/workflows/create-server-unit-mod.md",
+      "intents": [
+        "build_server_mod",
+        "unit_balance_mod",
+        "unit_spec_override"
+      ],
+      "tags": ["workflow", "server", "units"]
+    },
+    {
+      "id": "workflow-release",
+      "path": ".agent/workflows/test-package-release.md",
+      "intents": [
+        "validate_mod",
+        "zip_package",
+        "submit_community_mods"
+      ],
+      "tags": ["workflow", "release", "qa", "submission"]
+    }
+  ],
+  "templates": [
+    {
+      "id": "template-client-ui",
+      "path": ".agent/templates/client-ui",
+      "context": "client"
+    },
+    {
+      "id": "template-server-unit",
+      "path": ".agent/templates/server-unit",
+      "context": "server"
+    },
+    {
+      "id": "template-companion-client",
+      "path": ".agent/templates/companion-client",
+      "context": "client_companion"
+    }
+  ]
+}

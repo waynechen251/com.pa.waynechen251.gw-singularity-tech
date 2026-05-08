@@ -1,0 +1,27 @@
+{
+  "context": "client",
+  "identifier": "__MOD_IDENTIFIER__",
+  "display_name": "__DISPLAY_NAME__",
+  "description": "__DESCRIPTION__",
+  "author": "__AUTHOR__",
+  "version": "0.1.0",
+  "build": "__PA_BUILD__",
+  "date": "__UTC_YYYY_MM_DD__",
+  "signature": " ",
+  "forum": "__FORUM_URL__",
+  "category": [
+    "ui",
+    "titans"
+  ],
+  "scenes": {
+    "new_game": [
+      "coui://ui/mods/__MOD_IDENTIFIER__/new_game.js"
+    ],
+    "live_game": [
+      "coui://ui/mods/__MOD_IDENTIFIER__/live_game.js"
+    ],
+    "settings": [
+      "coui://ui/mods/__MOD_IDENTIFIER__/settings.js"
+    ]
+  }
+}

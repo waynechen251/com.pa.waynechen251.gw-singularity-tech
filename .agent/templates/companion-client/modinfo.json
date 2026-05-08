@@ -1,0 +1,19 @@
+{
+  "context": "client",
+  "identifier": "__MOD_IDENTIFIER__",
+  "display_name": "__DISPLAY_NAME__ Companion",
+  "description": "__DESCRIPTION__",
+  "author": "__AUTHOR__",
+  "version": "0.1.0",
+  "build": "__PA_BUILD__",
+  "date": "__UTC_YYYY_MM_DD__",
+  "signature": " ",
+  "forum": "__FORUM_URL__",
+  "category": [
+    "ui",
+    "gameplay",
+    "titans"
+  ],
+  "hidden": true,
+  "scenes": {}
+}
