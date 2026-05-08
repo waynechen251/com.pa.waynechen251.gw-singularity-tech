@@ -64,6 +64,17 @@
         "submit_community_mods"
       ],
       "tags": ["workflow", "release", "qa", "submission"]
+    },
+    {
+      "id": "skill-pa-local-steam-paths",
+      "path": ".agent/skills/pa-local-steam-paths/SKILL.md",
+      "intents": [
+        "local_deploy",
+        "steam_install_path",
+        "game_data_path",
+        "reference_original_game_files"
+      ],
+      "tags": ["skill", "local", "deploy", "steam", "paths"]
     }
   ],
   "templates": [

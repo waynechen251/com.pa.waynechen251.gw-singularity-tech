@@ -20,6 +20,7 @@
 - `catalog.json`：可程式化檢索索引（意圖、關鍵字、路徑）。
 - `knowledge/`：核心規範、API 與架構知識。
 - `workflows/`：任務導向操作手冊（client UI、server unit、release）。
+- `skills/`：可直接調用的專用技能（例如本機固定路徑與部署）。
 - `templates/`：可直接複製調整的 MOD 骨架。
 - `sources.md`：來源頁面與可追溯連結。
 
