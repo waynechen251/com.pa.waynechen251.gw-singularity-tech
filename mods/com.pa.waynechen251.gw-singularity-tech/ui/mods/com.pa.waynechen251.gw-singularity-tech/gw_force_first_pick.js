@@ -136,6 +136,10 @@
         if (!config)
             return;
 
+        // GW server-side lobby consumes top-level `config.land_anywhere`.
+        config.land_anywhere = true;
+
+        // Keep legacy/defensive mirrors for compatibility with mod stacks.
         config.game_options = config.game_options || {};
         config.game_options.land_anywhere = true;
 

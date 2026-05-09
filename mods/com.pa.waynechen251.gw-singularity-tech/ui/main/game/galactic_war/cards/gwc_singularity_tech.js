@@ -145,6 +145,24 @@ define([
         }
     ];
 
+    var commanderAdvancedBuildSpeedMods = [
+        {
+            file: '/pa/tools/commander_build_arm/commander_build_arm.json',
+            path: 'construction_demand.metal',
+            op: 'replace',
+            value: 80
+        }
+    ];
+
+    var basicMetalExtractorIncomeMods = [
+        {
+            file: '/pa/units/land/metal_extractor/metal_extractor.json',
+            path: 'production.metal',
+            op: 'replace',
+            value: 10
+        }
+    ];
+
     return {
         visible: function () { return true; },
         describe: function () {
@@ -176,6 +194,8 @@ define([
             });
             inventory.addMods(basicFabberUnlockMods);
             inventory.addMods(basicFactoryUnlockMods);
+            inventory.addMods(commanderAdvancedBuildSpeedMods);
+            inventory.addMods(basicMetalExtractorIncomeMods);
         },
         dull: function () { }
     };
