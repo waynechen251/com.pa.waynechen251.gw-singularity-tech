@@ -17,8 +17,7 @@ agent 在產出新 mod 時，至少要同時生成：
 
 1. `<mod_root>/modinfo.json`
 2. 對應場景或單位覆寫檔案
-3. `CHANGELOG.md`（記錄 version/date/build 變更）
-4. `release_notes.md`（準備論壇/社群發文）
+3. `release_notes.md`（準備論壇/社群發文）
 
 ## 快速檢查清單
 

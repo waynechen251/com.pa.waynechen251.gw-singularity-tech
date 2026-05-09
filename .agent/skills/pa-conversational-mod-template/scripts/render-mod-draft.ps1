@@ -389,7 +389,6 @@ $docs = New-DocText -Language $language -Spec $spec -DeployContext $deployContex
 
 Set-Content -LiteralPath (Join-Path $targetPath 'README.md') -Value $docs.Readme -Encoding UTF8
 Set-Content -LiteralPath (Join-Path $targetPath 'release_notes.md') -Value $docs.Release -Encoding UTF8
-Set-Content -LiteralPath (Join-Path $targetPath 'CHANGELOG.md') -Value $docs.Changelog -Encoding UTF8
 Set-Content -LiteralPath (Join-Path $targetPath 'validation-checklist.md') -Value $docs.Checklist -Encoding UTF8
 
 $result = [pscustomobject]@{

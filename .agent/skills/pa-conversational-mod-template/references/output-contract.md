@@ -6,7 +6,6 @@
 
 - `modinfo.json`
 - `README.md`
-- `CHANGELOG.md`
 - `release_notes.md`
 - `validation-checklist.md`
 
