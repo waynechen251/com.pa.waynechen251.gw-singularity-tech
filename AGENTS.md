@@ -14,9 +14,12 @@
 
 ## 目錄速查
 
-- [.agent/knowledge/](.agent/knowledge/) — 核心規則(modinfo、UI 技術棧、API 速查)
-- [.agent/workflows/](.agent/workflows/) — 標準操作流程(client UI / server unit / release)
-- [.agent/skills/](.agent/skills/) — 可調用技能(本機部署、對話式 MOD 模板)
+- [.agent/knowledge/](.agent/knowledge/) — 核心規則與欄位字典(modinfo、UI/API、unit 欄位、scene model、GW 卡片)
+- [.agent/cookbook/](.agent/cookbook/) — 可直接複製的 snippet 範例(unit 平衡、UI hook、聊天提示)
+- [.agent/glossary/](.agent/glossary/) — 中英對照詞彙表(unit、UI 術語)
+- [.agent/samples/](.agent/samples/) — 結構骨架與目錄索引(unit / GW card / scene model 名單)
+- [.agent/workflows/](.agent/workflows/) — 標準操作流程(client UI / server unit / release / publish)
+- [.agent/skills/](.agent/skills/) — 可調用技能(本機部署、對話式 MOD 模板、log 診斷)
 - [.agent/templates/](.agent/templates/) — 可複製的 MOD 骨架(client-ui / server-unit / companion-client)
 - [.agent/env/](.agent/env/) — 本機路徑範本(敏感資訊,不進版控)
 
@@ -24,7 +27,10 @@
 
 - 想建立新 MOD → [.agent/agent-playbook.md](.agent/agent-playbook.md)
 - 想理解 PA modding 規則 → [.agent/knowledge/pa-modding-core.md](.agent/knowledge/pa-modding-core.md)
-- 想做 UI / 場景 hook → [.agent/knowledge/ui-and-api.md](.agent/knowledge/ui-and-api.md)
+- 想做 UI / 場景 hook → [.agent/knowledge/ui-and-api.md](.agent/knowledge/ui-and-api.md) + [.agent/knowledge/scene-models.md](.agent/knowledge/scene-models.md)
+- 想改某單位的某屬性 → [.agent/glossary/zh-unit-terms.md](.agent/glossary/zh-unit-terms.md) → [.agent/knowledge/unit-spec-fields.md](.agent/knowledge/unit-spec-fields.md) → [.agent/cookbook/unit-balance-tweaks.md](.agent/cookbook/unit-balance-tweaks.md)
+- 想做某 UI 行為 → [.agent/glossary/zh-ui-terms.md](.agent/glossary/zh-ui-terms.md) → [.agent/cookbook/chat-alert.md](.agent/cookbook/chat-alert.md) 或 [.agent/cookbook/ui-hook-recipes.md](.agent/cookbook/ui-hook-recipes.md)
+- 想做 Galactic War 卡片 → [.agent/knowledge/galactic-war-cards.md](.agent/knowledge/galactic-war-cards.md) + [.agent/samples/gw-cards/_skeleton.md](.agent/samples/gw-cards/_skeleton.md)
 - 想對話式產出 MOD 草稿 → [.agent/skills/pa-conversational-mod-template/SKILL.md](.agent/skills/pa-conversational-mod-template/SKILL.md)
 - 想本機部署測試 → [.agent/skills/pa-local-steam-paths/SKILL.md](.agent/skills/pa-local-steam-paths/SKILL.md)
 - 想查 LOG / 診斷錯誤 → [.agent/skills/pa-log-debugger/SKILL.md](.agent/skills/pa-log-debugger/SKILL.md)

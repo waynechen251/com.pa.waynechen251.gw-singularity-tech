@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "project": "Planetary Annihilation Modding Knowledge Base",
   "updated_at": "2026-05-09",
   "entrypoints": [
@@ -11,7 +11,8 @@
         "choose_workflow",
         "standard_output"
       ],
-      "tags": ["entry", "router", "playbook"]
+      "tags": ["entry", "router", "playbook"],
+      "zh_aliases": ["入口", "路由", "怎麼開始"]
     },
     {
       "id": "pa-core-rules",
@@ -20,9 +21,11 @@
         "create_mod",
         "modinfo",
         "mod_structure",
-        "client_or_server_decision"
+        "client_or_server_decision",
+        "unit_override_path"
       ],
-      "tags": ["core", "rules", "modinfo", "structure"]
+      "tags": ["core", "rules", "modinfo", "structure"],
+      "zh_aliases": ["modinfo", "命名", "規範", "結構", "覆寫"]
     },
     {
       "id": "pa-ui-api",
@@ -31,9 +34,45 @@
         "ui_modding",
         "scene_hook",
         "api_usage",
-        "chat_alert_like_mod"
+        "api_audio",
+        "api_panel"
       ],
-      "tags": ["ui", "api", "coherent", "knockout", "scenes"]
+      "tags": ["ui", "api", "coherent", "knockout", "scenes"],
+      "zh_aliases": ["UI", "介面", "音效", "API", "場景"]
+    },
+    {
+      "id": "pa-unit-spec-fields",
+      "path": ".agent/knowledge/unit-spec-fields.md",
+      "intents": [
+        "unit_field_lookup",
+        "unit_json_schema",
+        "weapon_field_lookup",
+        "balance_field_lookup"
+      ],
+      "tags": ["unit", "json", "fields", "weapon", "navigation", "recon"],
+      "zh_aliases": ["單位", "射程", "HP", "速度", "傷害", "視野", "武器", "建造機"]
+    },
+    {
+      "id": "pa-scene-models",
+      "path": ".agent/knowledge/scene-models.md",
+      "intents": [
+        "scene_model_lookup",
+        "ko_observable_lookup",
+        "ui_event_subscribe"
+      ],
+      "tags": ["scene", "model", "knockout", "ui"],
+      "zh_aliases": ["大廳", "戰場", "聊天", "警告", "選取"]
+    },
+    {
+      "id": "pa-galactic-war-cards",
+      "path": ".agent/knowledge/galactic-war-cards.md",
+      "intents": [
+        "gw_card_modding",
+        "gw_content_modding",
+        "card_effect_design"
+      ],
+      "tags": ["galactic_war", "gw", "card", "single_player"],
+      "zh_aliases": ["戰役", "GW", "卡片", "卡牌", "單機"]
     },
     {
       "id": "workflow-client-ui",
@@ -43,7 +82,8 @@
         "new_game_scene_mod",
         "settings_scene_mod"
       ],
-      "tags": ["workflow", "client", "ui"]
+      "tags": ["workflow", "client", "ui"],
+      "zh_aliases": ["UI mod", "做介面", "客戶端"]
     },
     {
       "id": "workflow-server-unit",
@@ -53,7 +93,8 @@
         "unit_balance_mod",
         "unit_spec_override"
       ],
-      "tags": ["workflow", "server", "units"]
+      "tags": ["workflow", "server", "units"],
+      "zh_aliases": ["server mod", "改單位", "平衡"]
     },
     {
       "id": "workflow-release",
@@ -63,39 +104,8 @@
         "zip_package",
         "submit_community_mods"
       ],
-      "tags": ["workflow", "release", "qa", "submission"]
-    },
-    {
-      "id": "skill-pa-local-steam-paths",
-      "path": ".agent/skills/pa-local-steam-paths/SKILL.md",
-      "intents": [
-        "local_deploy",
-        "steam_install_path",
-        "game_data_path",
-        "reference_original_game_files"
-      ],
-      "tags": ["skill", "local", "deploy", "steam", "paths"]
-    },
-    {
-      "id": "local-env-template",
-      "path": ".agent/env/pa-local.env.example",
-      "intents": [
-        "local_path_bootstrap",
-        "developer_machine_setup",
-        "sensitive_path_isolation"
-      ],
-      "tags": ["env", "template", "local", "security"]
-    },
-    {
-      "id": "skill-pa-conversational-mod-template",
-      "path": ".agent/skills/pa-conversational-mod-template/SKILL.md",
-      "intents": [
-        "conversational_mod_scaffold",
-        "guided_mod_template",
-        "required_questioning",
-        "pa_mod_template_generation"
-      ],
-      "tags": ["skill", "conversation", "template", "pa", "scaffold"]
+      "tags": ["workflow", "release", "qa", "submission"],
+      "zh_aliases": ["發布", "打包", "上架", "測試"]
     },
     {
       "id": "workflow-publish-community",
@@ -106,24 +116,171 @@
         "automation_feasibility",
         "first_time_submission"
       ],
-      "tags": ["workflow", "publish", "community", "automation"]
+      "tags": ["workflow", "publish", "community", "automation"],
+      "zh_aliases": ["上架", "社群", "Discord", "審核"]
+    },
+    {
+      "id": "skill-pa-local-steam-paths",
+      "path": ".agent/skills/pa-local-steam-paths/SKILL.md",
+      "intents": [
+        "local_deploy",
+        "steam_install_path",
+        "game_data_path",
+        "reference_original_game_files"
+      ],
+      "tags": ["skill", "local", "deploy", "steam", "paths"],
+      "zh_aliases": ["部署", "本機", "測試", "Steam"]
+    },
+    {
+      "id": "skill-pa-conversational-mod-template",
+      "path": ".agent/skills/pa-conversational-mod-template/SKILL.md",
+      "intents": [
+        "conversational_mod_scaffold",
+        "guided_mod_template",
+        "required_questioning",
+        "pa_mod_template_generation"
+      ],
+      "tags": ["skill", "conversation", "template", "pa", "scaffold"],
+      "zh_aliases": ["對話", "問答", "生成", "模板", "vibe coding"]
+    },
+    {
+      "id": "skill-pa-log-debugger",
+      "path": ".agent/skills/pa-log-debugger/SKILL.md",
+      "intents": [
+        "log_analysis",
+        "error_diagnosis",
+        "mod_load_failure"
+      ],
+      "tags": ["skill", "debug", "log", "diagnosis"],
+      "zh_aliases": ["debug", "log", "錯誤", "診斷", "查問題"]
+    },
+    {
+      "id": "local-env-template",
+      "path": ".agent/env/pa-local.env.example",
+      "intents": [
+        "local_path_bootstrap",
+        "developer_machine_setup",
+        "sensitive_path_isolation"
+      ],
+      "tags": ["env", "template", "local", "security"],
+      "zh_aliases": ["環境變數", "路徑設定"]
+    },
+    {
+      "id": "cookbook-unit-balance-tweaks",
+      "path": ".agent/cookbook/unit-balance-tweaks.md",
+      "intents": [
+        "recipe_snippet",
+        "unit_balance_recipe",
+        "weapon_tweak_patch"
+      ],
+      "tags": ["cookbook", "unit", "balance", "patch", "snippet"],
+      "zh_aliases": ["範例", "片段", "射程", "建造速度", "加血", "改單位"]
+    },
+    {
+      "id": "cookbook-chat-alert",
+      "path": ".agent/cookbook/chat-alert.md",
+      "intents": [
+        "recipe_snippet",
+        "chat_alert_recipe",
+        "audio_event_hook"
+      ],
+      "tags": ["cookbook", "ui", "audio", "alert", "snippet"],
+      "zh_aliases": ["響鈴", "提示音", "聊天", "警告音", "玩家加入"]
+    },
+    {
+      "id": "cookbook-ui-hook-recipes",
+      "path": ".agent/cookbook/ui-hook-recipes.md",
+      "intents": [
+        "recipe_snippet",
+        "ui_hook_recipe",
+        "subscribe_observable_pattern",
+        "inject_button_pattern",
+        "panel_message_pattern"
+      ],
+      "tags": ["cookbook", "ui", "knockout", "snippet", "pattern"],
+      "zh_aliases": ["按鈕", "快捷鍵", "subscribe", "panel", "注入"]
+    },
+    {
+      "id": "glossary-zh-unit-terms",
+      "path": ".agent/glossary/zh-unit-terms.md",
+      "intents": [
+        "zh_term_translate",
+        "unit_chinese_lookup",
+        "identifier_resolve"
+      ],
+      "tags": ["glossary", "zh", "unit", "terminology"],
+      "zh_aliases": ["坦克", "機器人", "戰鬥機", "轟炸機", "砲塔", "建造機", "礦機", "工廠"]
+    },
+    {
+      "id": "glossary-zh-ui-terms",
+      "path": ".agent/glossary/zh-ui-terms.md",
+      "intents": [
+        "zh_term_translate",
+        "ui_chinese_lookup",
+        "scene_resolve"
+      ],
+      "tags": ["glossary", "zh", "ui", "scene", "terminology"],
+      "zh_aliases": ["大廳", "戰場", "設定", "聊天", "建造列表", "小地圖"]
+    },
+    {
+      "id": "samples-units-skeleton",
+      "path": ".agent/samples/units/_skeleton.md",
+      "intents": [
+        "unit_schema_outline",
+        "unit_structure_reference"
+      ],
+      "tags": ["samples", "unit", "schema", "outline"],
+      "zh_aliases": ["骨架", "結構", "範例結構"]
+    },
+    {
+      "id": "samples-units-index",
+      "path": ".agent/samples/units/_index.md",
+      "intents": [
+        "unit_directory_index",
+        "find_unit_path"
+      ],
+      "tags": ["samples", "unit", "index", "directory"],
+      "zh_aliases": ["目錄", "檔案位置", "資料夾"]
+    },
+    {
+      "id": "samples-gw-cards-skeleton",
+      "path": ".agent/samples/gw-cards/_skeleton.md",
+      "intents": [
+        "gw_card_schema_outline",
+        "gw_card_structure_reference"
+      ],
+      "tags": ["samples", "gw", "card", "schema", "outline"],
+      "zh_aliases": ["卡片骨架", "GW 範例"]
+    },
+    {
+      "id": "samples-scenes-snapshot",
+      "path": ".agent/samples/scenes/scenes-snapshot.md",
+      "intents": [
+        "scene_model_grep_list",
+        "scene_observable_index"
+      ],
+      "tags": ["samples", "scene", "model", "snapshot"],
+      "zh_aliases": ["model 名單", "scene 速查"]
     }
   ],
   "templates": [
     {
       "id": "template-client-ui",
       "path": ".agent/templates/client-ui",
-      "context": "client"
+      "context": "client",
+      "zh_aliases": ["客戶端模板", "UI 模板"]
     },
     {
       "id": "template-server-unit",
       "path": ".agent/templates/server-unit",
-      "context": "server"
+      "context": "server",
+      "zh_aliases": ["伺服器模板", "單位模板"]
     },
     {
       "id": "template-companion-client",
       "path": ".agent/templates/companion-client",
-      "context": "client_companion"
+      "context": "client_companion",
+      "zh_aliases": ["配伴模板", "companion"]
     }
   ]
 }
