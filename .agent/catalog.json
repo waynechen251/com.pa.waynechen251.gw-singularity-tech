@@ -85,6 +85,17 @@
         "sensitive_path_isolation"
       ],
       "tags": ["env", "template", "local", "security"]
+    },
+    {
+      "id": "skill-pa-conversational-mod-template",
+      "path": ".agent/skills/pa-conversational-mod-template/SKILL.md",
+      "intents": [
+        "conversational_mod_scaffold",
+        "guided_mod_template",
+        "required_questioning",
+        "pa_mod_template_generation"
+      ],
+      "tags": ["skill", "conversation", "template", "pa", "scaffold"]
     }
   ],
   "templates": [

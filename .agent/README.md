@@ -29,6 +29,7 @@
 - `skills/`：可直接調用的專用技能（例如本機固定路徑與部署）。
 - `templates/`：可直接複製調整的 MOD 骨架。
 - `sources.md`：來源頁面與可追溯連結。
+- 對話式建模：`.agent/skills/pa-conversational-mod-template/SKILL.md`
 
 ## 注意事項
 
