@@ -20,7 +20,14 @@ if (-not (Test-Path -LiteralPath $modInfoPath)) {
   throw "modinfo.json not found in source path: $resolvedSource"
 }
 
-$modInfo = Get-Content -LiteralPath $modInfoPath -Raw | ConvertFrom-Json
+$modInfoRaw = Get-Content -LiteralPath $modInfoPath -Raw -Encoding UTF8
+try {
+  $modInfo = $modInfoRaw | ConvertFrom-Json
+}
+catch {
+  $modInfoRaw = Get-Content -LiteralPath $modInfoPath -Raw
+  $modInfo = $modInfoRaw | ConvertFrom-Json
+}
 
 if (-not $Identifier -or $Identifier.Trim().Length -eq 0) {
   $Identifier = [string]$modInfo.identifier
