@@ -27,6 +27,24 @@
 - 想做 UI / 場景 hook → [.agent/knowledge/ui-and-api.md](.agent/knowledge/ui-and-api.md)
 - 想對話式產出 MOD 草稿 → [.agent/skills/pa-conversational-mod-template/SKILL.md](.agent/skills/pa-conversational-mod-template/SKILL.md)
 - 想本機部署測試 → [.agent/skills/pa-local-steam-paths/SKILL.md](.agent/skills/pa-local-steam-paths/SKILL.md)
+- 想查 LOG / 診斷錯誤 → [.agent/skills/pa-log-debugger/SKILL.md](.agent/skills/pa-log-debugger/SKILL.md)
+
+## Agent 行為規則 — LOG 除錯強制路由
+
+**任何**涉及以下情境時，agent **必須**先讀取並執行 [.agent/skills/pa-log-debugger/SKILL.md](.agent/skills/pa-log-debugger/SKILL.md)，**不得**自行猜測錯誤原因或直接修改檔案：
+
+- 使用者要求「查 log」、「看 log」、「分析 log」、「debug」、「錯誤在哪」
+- 提到 `PA-*.txt`、PA 執行 log、遊戲 log
+- 出現 `Uncaught`、`Script error`、`Failed loading`、`404`、`require`/`load` 失敗
+- mod 載入失敗、Galactic War 卡片或場景注入失效
+- 任何需要從 log 找問題根因的情境
+
+執行順序：
+1. 讀 `pa-log-debugger/SKILL.md` 了解流程
+2. 執行 `collect-pa-log-context.ps1` 收集環境
+3. 執行 `scan-pa-log.ps1` 掃描 log
+4. 依 `references/error-taxonomy.md` 分類輸出診斷
+5. 依 `references/output-template.md` 格式回報結果
 
 ## 本機環境設置(每台電腦做一次)
 
