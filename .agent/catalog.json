@@ -96,6 +96,17 @@
         "pa_mod_template_generation"
       ],
       "tags": ["skill", "conversation", "template", "pa", "scaffold"]
+    },
+    {
+      "id": "workflow-publish-community",
+      "path": ".agent/workflows/publish-to-community-mods.md",
+      "intents": [
+        "publish_in_game_listing",
+        "community_mod_review_flow",
+        "automation_feasibility",
+        "first_time_submission"
+      ],
+      "tags": ["workflow", "publish", "community", "automation"]
     }
   ],
   "templates": [
