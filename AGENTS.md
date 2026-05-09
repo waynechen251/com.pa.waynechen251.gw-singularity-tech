@@ -67,8 +67,7 @@ agent 產出新 MOD 時最少需含:
 
 1. `<mod_root>/modinfo.json`
 2. 對應場景或單位覆寫檔
-3. `CHANGELOG.md`(version / date / build 變更)
-4. `release_notes.md`(社群發文素材)
+3. `release_notes.md`(社群發文素材)
 
 完整契約見 [.agent/skills/pa-conversational-mod-template/references/output-contract.md](.agent/skills/pa-conversational-mod-template/references/output-contract.md)。
 

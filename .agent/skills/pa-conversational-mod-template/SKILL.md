@@ -38,7 +38,6 @@ powershell -ExecutionPolicy Bypass -File .agent/skills/pa-conversational-mod-tem
 
 - `modinfo.json`
 - `README.md`
-- `CHANGELOG.md`
 - `release_notes.md`
 - `validation-checklist.md`
 - context 專屬骨架（client/server/companion-client）
