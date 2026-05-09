@@ -9,4 +9,6 @@
 - [ ] README 部署命令包含 `-EnvFilePath ".agent/env/pa-local.env"`。
 - [ ] README 部署命令的 `-SourceModPath` 使用 placeholder（`"<generated_mod_path>"`）。
 - [ ] 啟用 MOD 後，GW 開局可正確套用 `gw_force_first_pick.js`。
-- [ ] `gwc_damage_bots` 覆寫後描述顯示「奇點工程科技」。
+- [ ] 首次探索抽卡第一張為 `gwc_singularity_tech`（未持有時）。
+- [ ] 原版 `gwc_damage_bots` 仍保持原本功能（未被此 MOD 覆寫）。
+- [ ] 取得 `gwc_singularity_tech` 後，基礎建造者可建造進階建築。

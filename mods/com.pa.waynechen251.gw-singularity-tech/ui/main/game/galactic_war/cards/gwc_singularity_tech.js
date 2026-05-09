@@ -73,18 +73,57 @@ define([
         costVehicles
     ];
 
-    return {
-        visible: function (params) { return true; },
-        describe: function (params) {
-            return '!LOC:奇點工程科技：一次獲得所有完整建造科技、全部建造效率強化與全部製造成本減免。';
+    var basicFabberUnlockMods = [
+        {
+            file: '/pa/units/land/fabrication_bot/fabrication_bot.json',
+            path: 'buildable_types',
+            op: 'add',
+            value: ' | Land & Structure & Advanced - Factory | Factory & Advanced & Bot & Land | FabAdvBuild'
         },
-        summarize: function (params) {
+        {
+            file: '/pa/units/land/fabrication_vehicle/fabrication_vehicle.json',
+            path: 'buildable_types',
+            op: 'add',
+            value: ' | Structure & Land & Advanced - Factory | Factory & Land & Tank & Advanced | FabAdvBuild'
+        },
+        {
+            file: '/pa/units/air/fabrication_aircraft/fabrication_aircraft.json',
+            path: 'buildable_types',
+            op: 'add',
+            value: ' | Land & Structure & Advanced - Factory | Factory & Advanced & Air | FabAdvBuild'
+        },
+        {
+            file: '/pa/units/sea/fabrication_ship/fabrication_ship.json',
+            path: 'buildable_types',
+            op: 'add',
+            value: ' | Naval & Structure & Advanced | Naval & Factory & Advanced | FabAdvBuild'
+        },
+        {
+            file: '/pa/units/orbital/orbital_fabrication_bot/orbital_fabrication_bot.json',
+            path: 'buildable_types',
+            op: 'add',
+            value: ' | FabOrbBuild'
+        },
+        {
+            file: '/pa/units/commanders/base_commander/base_commander.json',
+            path: 'buildable_types',
+            op: 'add',
+            value: ' | Structure & Advanced | Factory & Advanced | FabAdvBuild | FabOrbBuild'
+        }
+    ];
+
+    return {
+        visible: function () { return true; },
+        describe: function () {
+            return '!LOC:奇點工程科技：一次獲得所有完整建造科技、全部建造效率強化、全部製造成本減免，並讓所有基礎建造者（含軌道）與指揮官可建造高階建築與工廠。';
+        },
+        summarize: function () {
             return '!LOC:奇點工程科技';
         },
-        icon: function (params) {
+        icon: function () {
             return 'coui://ui/main/game/galactic_war/gw_play/img/tech/gwc_metal.png';
         },
-        audio: function (params) {
+        audio: function () {
             return {
                 found: '/VO/Computer/gw/board_tech_available_efficiency'
             };
@@ -94,16 +133,16 @@ define([
                 totalSize: galaxy.stars().length
             };
         },
-        deal: function (system, context, inventory) {
-            var chance = 1000000;
-            return { chance: chance };
+        deal: function () {
+            return { chance: 1 };
         },
         buff: function (inventory, params) {
             _.forEach(allTechCards, function (card) {
                 if (card && _.isFunction(card.buff))
                     card.buff(inventory, params);
             });
+            inventory.addMods(basicFabberUnlockMods);
         },
-        dull: function (inventory) { }
+        dull: function () { }
     };
 });

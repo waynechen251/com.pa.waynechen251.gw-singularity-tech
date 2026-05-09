@@ -2,12 +2,14 @@
 
 Identifier: `com.pa.waynechen251.gw-singularity-tech`
 
-此 MOD 會覆寫銀河戰爭內建卡片 `gwc_damage_bots`，改為一張整合型科技卡：
+此 MOD 會新增一張銀河戰爭科技卡 `gwc_singularity_tech`（奇點工程科技）：
 
 - 所有完整建造科技（空/機器人/車輛/海軍/軌道 + 砲兵/防禦/超級武器/泰坦）
 - 所有建築效率科技（指揮官建造臂 + 工廠/工兵建造臂）
 - 所有成本減免科技（air/bot/vehicle/sea/orbital/economy/defense/intel/artillery/superweapons/titans）
-- 首次抽卡必中此卡（若你尚未持有此卡）
+- 所有基礎建造者（機器人/車輛/空軍/海軍/軌道）可直接建造該類型高階建築與工廠
+- 指揮官可直接建造高階建築與工廠
+- 首次探索抽卡保底此卡（若你尚未持有此卡）
 
 ## 安裝（env-only 流程）
 
@@ -24,7 +26,7 @@ powershell -ExecutionPolicy Bypass -File .agent/skills/pa-local-steam-paths/scri
 1. 啟動 PA TITANS。
 2. Community Mods -> Installed 啟用 `GW Singularity Tech`。
 3. 開新銀河戰爭。
-4. 拿到原本 `gwc_damage_bots` 位置的卡時，描述應顯示「奇點工程科技」。
+4. 首次探索時，科技卡第一張應為「奇點工程科技」。
 
 ## 路徑規範
 
