@@ -54,9 +54,9 @@ function Resolve-PathFromMap {
 function List-DirectoriesSafe {
   param([string]$Path)
   if (-not (Test-Path -LiteralPath $Path)) {
-    return @()
+    return [string[]]@()
   }
-  return @(Get-ChildItem -LiteralPath $Path -Directory | Select-Object -ExpandProperty Name)
+  return [string[]](Get-ChildItem -LiteralPath $Path -Directory | Select-Object -ExpandProperty Name)
 }
 
 $envMap = Get-DotEnvMap -Path $EnvFilePath
@@ -75,6 +75,9 @@ if (Test-Path -LiteralPath $logDir) {
     Sort-Object LastWriteTime -Descending |
     Select-Object -First 1 -ExpandProperty FullName
 }
+
+$clientMods = @(List-DirectoriesSafe -Path $clientModsDir)
+$serverMods = @(List-DirectoriesSafe -Path $serverModsDir)
 
 $identifierCheck = $null
 if ($Identifier) {
@@ -108,8 +111,10 @@ $context = [PSCustomObject]@{
     pa_log_dir = Test-Path -LiteralPath $logDir
   }
   installed_mods = [PSCustomObject]@{
-    client = List-DirectoriesSafe -Path $clientModsDir
-    server = List-DirectoriesSafe -Path $serverModsDir
+    client_count = $clientMods.Count
+    client_items = $clientMods
+    server_count = $serverMods.Count
+    server_items = $serverMods
   }
   latest_log = $latestLog
   identifier_check = $identifierCheck

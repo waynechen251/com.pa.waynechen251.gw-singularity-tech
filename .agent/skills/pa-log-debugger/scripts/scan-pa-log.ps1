@@ -114,35 +114,35 @@ for ($i = 0; $i -lt $lines.Count; $i++) {
 
   $line = [string]$lines[$i]
   $lineNo = $i + 1
-  $evidence = "L$lineNo: $line"
+  $evidence = "L${lineNo}: $line"
 
   if ($line -match 'Script error for:\s*pages\/gw_start\/gw_dealer') {
-    $findings.Add((New-Finding -Severity 'high' -Category 'module_require_failure' -Evidence $evidence -Hypothesis 'Galactic War 的 require module 名稱或載入時機不正確，導致腳本已注入但核心模組未成功解析。' -Fix '優先改用 requireGW 載入 pages/gw_start/gw_dealer，並保留 fallback require。確認錯誤場景（gw_start/gw_play）均能解析該模組。'))
+    $findings.Add((New-Finding -Severity 'high' -Category 'module_require_failure' -Evidence $evidence -Hypothesis 'The Galactic War module name or loader timing is wrong. The script was injected but the core module failed to resolve.' -Fix 'Use requireGW for pages/gw_start/gw_dealer and keep a fallback require only when needed. Verify both gw_start and gw_play can resolve the module.'))
     continue
   }
 
   if ($line -match 'Failed loading .* with 404') {
-    $findings.Add((New-Finding -Severity 'high' -Category 'resource_404' -Evidence $evidence -Hypothesis '注入路徑、檔名或場景映射錯誤，導致 COUI 資源不存在。' -Fix '比對 modinfo.json 的 scenes 與實際 ui/mods/<identifier>/ 路徑；確認大小寫與 identifier 完全一致。'))
-    continue
-  }
-
-  if ($line -match 'ERROR Error reading .*: 3' -or $line -match 'Access to the path .* is denied' -or $line -match 'Unable to find path:') {
-    $findings.Add((New-Finding -Severity 'high' -Category 'path_or_permission' -Evidence $evidence -Hypothesis 'PA 目錄路徑不存在或權限不足，造成 mod 或資源讀取失敗。' -Fix '檢查 PA_DATA_DIR / PA_CLIENT_MODS_DIR / PA_GAME_DIR 是否正確，必要時提權部署並確認目標資料夾存在。'))
+    $findings.Add((New-Finding -Severity 'high' -Category 'resource_404' -Evidence $evidence -Hypothesis 'Scene mapping, file name, or injection path is incorrect, so the COUI asset was not found.' -Fix 'Check modinfo.json scenes against the real ui/mods/<identifier>/ path and confirm exact casing and identifier match.'))
     continue
   }
 
   if ($line -match 'client_mods\\com\.pa\.wayne(\.|chen251\.)gw-bot-overclock-tech') {
-    $findings.Add((New-Finding -Severity 'medium' -Category 'legacy_mod_residue' -Evidence $evidence -Hypothesis '舊版模組殘留可能與新版 identifier 或卡片邏輯衝突。' -Fix '刪除舊版 mod 目錄，只保留目標 identifier 的單一版本，重啟遊戲再驗證。'))
+    $findings.Add((New-Finding -Severity 'medium' -Category 'legacy_mod_residue' -Evidence $evidence -Hypothesis 'Legacy mod folders may conflict with the current identifier or card logic.' -Fix 'Remove old mod folders, keep only the target identifier, then restart the game and re-test.'))
+    continue
+  }
+
+  if ($line -match 'ERROR Error reading .*: 3' -or $line -match 'Access to the path .* is denied' -or $line -match 'Unable to find path:') {
+    $findings.Add((New-Finding -Severity 'high' -Category 'path_or_permission' -Evidence $evidence -Hypothesis 'PA paths are missing or access permissions are insufficient, causing mod/resource read failures.' -Fix 'Verify PA_DATA_DIR / PA_CLIENT_MODS_DIR / PA_GAME_DIR and deploy with elevation if required. Confirm target directories exist.'))
     continue
   }
 
   if ($line -match 'Uncaught (TypeError|ReferenceError)' -or $line -match 'ERROR .*Uncaught') {
-    $findings.Add((New-Finding -Severity 'medium' -Category 'javascript_runtime_error' -Evidence $evidence -Hypothesis 'UI 腳本在執行時呼叫未定義函式或資料結構不符合預期。' -Fix '針對出錯腳本加 defensive check（型別/存在性判斷），再用同場景重跑並確認錯誤消失。'))
+    $findings.Add((New-Finding -Severity 'medium' -Category 'javascript_runtime_error' -Evidence $evidence -Hypothesis 'A UI script called an undefined function or assumed an unexpected data shape.' -Fix 'Add defensive checks for existence and type, then replay the same scene and confirm the error is gone.'))
     continue
   }
 
   if ($line -match 'gw_force_first_pick\.js loaded') {
-    $findings.Add((New-Finding -Severity 'info' -Category 'scene_injection_confirmed' -Evidence $evidence -Hypothesis '目標腳本已被場景成功注入，問題較可能在執行邏輯或後續 require。' -Fix '優先檢查該腳本內 require/module 名稱、hook 時機與回傳資料格式（卡片字串 vs 物件）。'))
+    $findings.Add((New-Finding -Severity 'info' -Category 'scene_injection_confirmed' -Evidence $evidence -Hypothesis 'The target script was injected successfully. The failure is likely in runtime logic or follow-up module loading.' -Fix 'Check module names, hook timing, and card list entry shape handling (string vs object).'))
     continue
   }
 }
@@ -152,39 +152,44 @@ $mediumCount = @($findings | Where-Object { $_.severity -eq 'medium' }).Count
 $infoCount = @($findings | Where-Object { $_.severity -eq 'info' }).Count
 
 $recommendations = @(
-  '先處理 high severity：module require 失敗、404、路徑/權限問題。',
-  '清理舊版模組殘留並重啟 PA TITANS，再進行回歸測試。',
-  '修正後重跑本腳本，確認同類錯誤訊號不再出現。'
+  'Handle high-severity findings first: module require failures, 404 errors, and path/permission issues.',
+  'Remove legacy mod residues and fully restart PA TITANS before regression tests.',
+  'Re-run this scanner after fixes to confirm the same signals are gone.'
 )
 
 $verificationSteps = @(
-  '完整重啟 PA TITANS，避免舊場景快取。',
-  '進入 Community Mods 確認僅啟用目標 identifier。',
-  '開新 Galactic War，檢查目標卡片行為與描述是否正確。',
-  '再次掃描最新 PA-*.txt，確認無新增 high severity finding。'
+  'Fully restart PA TITANS to avoid stale scene cache.',
+  'In Community Mods, verify only the target identifier is enabled.',
+  'Start a new Galactic War and validate card behavior/description.',
+  'Scan the latest PA-*.txt again and ensure no new high-severity findings remain.'
 )
 
-$result = [PSCustomObject]@{
-  summary = [PSCustomObject]@{
-    log_path = $resolvedLogPath
-    findings_total = $findings.Count
-    high = $highCount
-    medium = $mediumCount
-    info = $infoCount
+$scanFindings = @()
+foreach ($findingItem in $findings) {
+  $scanFindings += $findingItem
+}
+
+$scanResult = @{
+  'summary' = @{
+    'log_path' = $resolvedLogPath
+    'findings_total' = $findings.Count
+    'high' = $highCount
+    'medium' = $mediumCount
+    'info' = $infoCount
   }
-  findings = @($findings)
-  recommendations = $recommendations
-  verification_steps = $verificationSteps
+  'findings' = $scanFindings
+  'recommendations' = $recommendations
+  'verification_steps' = $verificationSteps
 }
 
 if ($OutputFormat -eq 'json') {
-  $result | ConvertTo-Json -Depth 8
+  $scanResult | ConvertTo-Json -Depth 8
   exit 0
 }
 
 Write-Output "PA Log Diagnostic"
 Write-Output "Log: $resolvedLogPath"
-Write-Output ("Findings: total={0}, high={1}, medium={2}, info={3}" -f $result.summary.findings_total, $result.summary.high, $result.summary.medium, $result.summary.info)
+Write-Output ("Findings: total={0}, high={1}, medium={2}, info={3}" -f $scanResult.summary.findings_total, $scanResult.summary.high, $scanResult.summary.medium, $scanResult.summary.info)
 Write-Output ""
 
 if ($findings.Count -eq 0) {
