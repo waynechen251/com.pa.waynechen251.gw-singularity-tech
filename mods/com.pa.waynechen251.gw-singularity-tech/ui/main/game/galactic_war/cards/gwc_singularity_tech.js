@@ -102,7 +102,7 @@ define([
             file: '/pa/units/orbital/orbital_fabrication_bot/orbital_fabrication_bot.json',
             path: 'buildable_types',
             op: 'add',
-            value: ' | FabOrbBuild'
+            value: ' | Structure | Factory | FabBuild | FabAdvBuild | FabOrbBuild'
         },
         {
             file: '/pa/units/commanders/base_commander/base_commander.json',
@@ -112,10 +112,43 @@ define([
         }
     ];
 
+    var basicFactoryUnlockMods = [
+        {
+            file: '/pa/units/land/bot_factory/bot_factory.json',
+            path: 'buildable_types',
+            op: 'replace',
+            value: 'Bot & Mobile & FactoryBuild'
+        },
+        {
+            file: '/pa/units/land/vehicle_factory/vehicle_factory.json',
+            path: 'buildable_types',
+            op: 'replace',
+            value: '(Land & Mobile & Tank | Tank & Fabber & Mobile) & FactoryBuild'
+        },
+        {
+            file: '/pa/units/air/air_factory/air_factory.json',
+            path: 'buildable_types',
+            op: 'replace',
+            value: '(Air & Mobile | Air & Fabber & Mobile) & FactoryBuild & Custom58'
+        },
+        {
+            file: '/pa/units/sea/naval_factory/naval_factory.json',
+            path: 'buildable_types',
+            op: 'replace',
+            value: '(Naval & Mobile) & FactoryBuild'
+        },
+        {
+            file: '/pa/units/orbital/orbital_launcher/orbital_launcher.json',
+            path: 'buildable_types',
+            op: 'replace',
+            value: 'Orbital & FactoryBuild'
+        }
+    ];
+
     return {
         visible: function () { return true; },
         describe: function () {
-            return '!LOC:奇點工程科技：一次獲得所有完整建造科技、全部建造效率強化、全部製造成本減免，並讓所有基礎建造者（含軌道）與指揮官可建造高階建築與工廠。';
+            return '!LOC:奇點工程科技：一次獲得所有完整建造科技、全部建造效率強化、全部製造成本減免，並解鎖基礎建造者與基礎工廠的完整建造權限。';
         },
         summarize: function () {
             return '!LOC:奇點工程科技';
@@ -142,6 +175,7 @@ define([
                     card.buff(inventory, params);
             });
             inventory.addMods(basicFabberUnlockMods);
+            inventory.addMods(basicFactoryUnlockMods);
         },
         dull: function () { }
     };

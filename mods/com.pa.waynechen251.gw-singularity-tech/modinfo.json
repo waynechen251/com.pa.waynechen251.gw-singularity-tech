@@ -2,7 +2,7 @@
   "context": "client",
   "identifier": "com.pa.waynechen251.gw-singularity-tech",
   "display_name": "銀河戰爭：奇點工程科技",
-  "description": "銀河戰爭：新增奇點工程科技卡，首抽保底並一次提供完整建造科技、建造效率、成本減免，且基礎建造者（含軌道）與指揮官可建造高階建築。",
+  "description": "銀河戰爭：新增奇點工程科技卡，首抽保底並一次提供完整建造科技、建造效率、成本減免，且基礎建造者/基礎工廠/指揮官完整解鎖建造權限。",
   "author": "waynechen251",
   "version": "0.1.0",
   "build": "124640",

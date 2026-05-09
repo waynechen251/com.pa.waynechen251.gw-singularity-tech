@@ -8,6 +8,8 @@ Identifier: `com.pa.waynechen251.gw-singularity-tech`
 - 所有建築效率科技（指揮官建造臂 + 工廠/工兵建造臂）
 - 所有成本減免科技（air/bot/vehicle/sea/orbital/economy/defense/intel/artillery/superweapons/titans）
 - 所有基礎建造者（機器人/車輛/空軍/海軍/軌道）可直接建造該類型高階建築與工廠
+- 所有基礎工廠（機器人/車輛/空軍/海軍/軌道發射）可生產該類型所有可建造單位
+- 軌道建設衛星可建造所有建築類別
 - 指揮官可直接建造高階建築與工廠
 - 首次探索抽卡保底此卡（若你尚未持有此卡）
 
