@@ -1,0 +1,25 @@
+{
+  "context": "client",
+  "identifier": "com.pa.waynechen251.gw-singularity-tech",
+  "display_name": "銀河戰爭：奇點工程科技",
+  "description": "銀河戰爭：將原本機器人彈藥科技改為整合型卡片，一次提供完整建造科技、建造效率與成本減免。",
+  "author": "waynechen251",
+  "version": "0.1.0",
+  "build": "124640",
+  "date": "2026-05-09",
+  "signature": " ",
+  "forum": "https://forums.planetaryannihilation.com/",
+  "category": [
+    "gw",
+    "ui",
+    "titans"
+  ],
+  "scenes": {
+    "gw_start": [
+      "coui://ui/mods/com.pa.waynechen251.gw-singularity-tech/gw_force_first_pick.js"
+    ],
+    "gw_play": [
+      "coui://ui/mods/com.pa.waynechen251.gw-singularity-tech/gw_force_first_pick.js"
+    ]
+  }
+}
