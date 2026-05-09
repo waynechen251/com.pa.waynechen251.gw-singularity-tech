@@ -15,6 +15,12 @@
 3. 依需求套用 `templates/*` 作為起始骨架。
 4. 按 `workflows/*` 執行實作、驗證、打包與提交。
 
+## 本機路徑（敏感資訊抽換）
+
+- 專案只保存範本：`.agent/env/pa-local.env.example`
+- 本機自用檔案：`.agent/env/pa-local.env`（已列入 `.gitignore`）
+- 請把 Steam/PA 路徑寫在 `.agent/env/pa-local.env`，再執行部署腳本
+
 ## 內容結構
 
 - `catalog.json`：可程式化檢索索引（意圖、關鍵字、路徑）。

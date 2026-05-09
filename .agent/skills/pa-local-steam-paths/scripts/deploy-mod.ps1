@@ -6,12 +6,50 @@ param(
   [ValidateSet('client', 'server')]
   [string]$Context,
 
-  [string]$Identifier
+  [string]$Identifier,
+
+  [string]$EnvFilePath = '.agent/env/pa-local.env'
 )
 
-$dataRoot = Join-Path $env:LOCALAPPDATA 'Uber Entertainment\Planetary Annihilation'
-$clientRoot = Join-Path $dataRoot 'client_mods'
-$serverRoot = Join-Path $dataRoot 'server_mods'
+$ErrorActionPreference = 'Stop'
+
+function Get-DotEnvMap {
+  param(
+    [string]$Path
+  )
+
+  $map = @{}
+  if (-not $Path -or -not (Test-Path -LiteralPath $Path)) {
+    return $map
+  }
+
+  $lines = Get-Content -LiteralPath $Path
+  foreach ($lineRaw in $lines) {
+    $line = [string]$lineRaw
+    $trimmed = $line.Trim()
+    if (-not $trimmed -or $trimmed.StartsWith('#')) {
+      continue
+    }
+    $parts = $trimmed -split '=', 2
+    if ($parts.Count -ne 2) {
+      continue
+    }
+    $key = $parts[0].Trim()
+    $value = $parts[1].Trim()
+    if ($key.Length -gt 0) {
+      $map[$key] = $value
+    }
+  }
+
+  return $map
+}
+
+$envMap = Get-DotEnvMap -Path $EnvFilePath
+
+$defaultDataRoot = Join-Path $env:LOCALAPPDATA 'Uber Entertainment\Planetary Annihilation'
+$dataRoot = if ($envMap.ContainsKey('PA_DATA_DIR') -and $envMap['PA_DATA_DIR']) { $envMap['PA_DATA_DIR'] } elseif ($env:PA_DATA_DIR) { $env:PA_DATA_DIR } else { $defaultDataRoot }
+$clientRoot = if ($envMap.ContainsKey('PA_CLIENT_MODS_DIR') -and $envMap['PA_CLIENT_MODS_DIR']) { $envMap['PA_CLIENT_MODS_DIR'] } elseif ($env:PA_CLIENT_MODS_DIR) { $env:PA_CLIENT_MODS_DIR } else { Join-Path $dataRoot 'client_mods' }
+$serverRoot = if ($envMap.ContainsKey('PA_SERVER_MODS_DIR') -and $envMap['PA_SERVER_MODS_DIR']) { $envMap['PA_SERVER_MODS_DIR'] } elseif ($env:PA_SERVER_MODS_DIR) { $env:PA_SERVER_MODS_DIR } else { Join-Path $dataRoot 'server_mods' }
 
 $resolvedSource = (Resolve-Path -LiteralPath $SourceModPath).Path
 $modInfoPath = Join-Path $resolvedSource 'modinfo.json'
@@ -54,3 +92,4 @@ Write-Output "Deployed: $resolvedSource"
 Write-Output "Target:   $targetPath"
 Write-Output "Context:  $Context"
 Write-Output "Id:       $Identifier"
+Write-Output "EnvFile:  $EnvFilePath"

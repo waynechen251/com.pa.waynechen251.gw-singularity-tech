@@ -75,6 +75,16 @@
         "reference_original_game_files"
       ],
       "tags": ["skill", "local", "deploy", "steam", "paths"]
+    },
+    {
+      "id": "local-env-template",
+      "path": ".agent/env/pa-local.env.example",
+      "intents": [
+        "local_path_bootstrap",
+        "developer_machine_setup",
+        "sensitive_path_isolation"
+      ],
+      "tags": ["env", "template", "local", "security"]
     }
   ],
   "templates": [
