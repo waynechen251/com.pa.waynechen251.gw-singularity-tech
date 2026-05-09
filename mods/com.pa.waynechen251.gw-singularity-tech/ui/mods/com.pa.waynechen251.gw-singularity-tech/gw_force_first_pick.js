@@ -2,6 +2,12 @@
     var targetCardId = 'gwc_singularity_tech';
     var dealerPatchFlag = '__waynechen251_force_first_pick_patched__';
     var explorePatchFlag = '__waynechen251_force_explore_patched__';
+    var refereePatchFlag = '__waynechen251_land_anywhere_referee_patched__';
+
+    var hasTargetCard = function (game) {
+        var inventory = game && _.isFunction(game.inventory) && game.inventory();
+        return !!(inventory && _.isFunction(inventory.hasCard) && inventory.hasCard(targetCardId));
+    };
 
     var getCardId = function (entry) {
         if (!entry)
@@ -118,10 +124,62 @@
         return true;
     };
 
+    var patchLandAnywhereConfig = function (referee, game) {
+        if (!referee || !_.isFunction(referee.config))
+            return;
+
+        var refereeGame = _.isFunction(referee.game) ? referee.game() : undefined;
+        if (!hasTargetCard(game) && !hasTargetCard(refereeGame))
+            return;
+
+        var config = referee.config();
+        if (!config)
+            return;
+
+        config.game_options = config.game_options || {};
+        config.game_options.land_anywhere = true;
+
+        if (_.isObject(config.system))
+            config.system.land_anywhere = true;
+
+        referee.config(config);
+    };
+
+    var patchReferee = function (GWReferee) {
+        if (!GWReferee || GWReferee[refereePatchFlag])
+            return;
+
+        if (typeof GWReferee.hire !== 'function')
+            return;
+
+        GWReferee[refereePatchFlag] = true;
+
+        var originalHire = GWReferee.hire;
+        GWReferee.hire = function (game) {
+            var hired = originalHire.apply(this, arguments);
+            var deferred = $.Deferred();
+
+            $.when(hired).then(function (referee) {
+                try {
+                    patchLandAnywhereConfig(referee, game);
+                } catch (e) {
+                }
+
+                deferred.resolve(referee);
+            }, function (err) {
+                deferred.reject(err);
+            });
+
+            return deferred.promise();
+        };
+    };
+
     if (typeof requireGW === 'function') {
         requireGW(['pages/gw_start/gw_dealer'], patchDealer);
+        requireGW(['pages/gw_play/gw_referee'], patchReferee);
     } else if (typeof require === 'function') {
         require(['coui://ui/main/game/galactic_war/gw_start/gw_dealer.js'], patchDealer);
+        require(['coui://ui/main/game/galactic_war/gw_play/gw_referee.js'], patchReferee);
     }
 
     var attempts = 0;

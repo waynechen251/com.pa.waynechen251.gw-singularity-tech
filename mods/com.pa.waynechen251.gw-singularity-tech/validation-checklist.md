@@ -14,3 +14,4 @@
 - [ ] 取得 `gwc_singularity_tech` 後，基礎工廠可生產該類型全單位。
 - [ ] 取得 `gwc_singularity_tech` 後，軌道建設衛星可建造所有建築類別。
 - [ ] 取得 `gwc_singularity_tech` 後，基礎建造者可建造進階建築。
+- [ ] 取得 `gwc_singularity_tech` 後，GW 對戰落地階段可 `Land Anywhere`（不受預設 landing zone 限制）。

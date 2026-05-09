@@ -148,7 +148,7 @@ define([
     return {
         visible: function () { return true; },
         describe: function () {
-            return '!LOC:奇點工程科技：一次獲得所有完整建造科技、全部建造效率強化、全部製造成本減免，並解鎖基礎建造者與基礎工廠的完整建造權限。';
+            return '!LOC:奇點工程科技：一次獲得所有完整建造科技、全部建造效率強化、全部製造成本減免，解鎖基礎建造者與基礎工廠的完整建造權限，並啟用 Land Anywhere。';
         },
         summarize: function () {
             return '!LOC:奇點工程科技';
