@@ -26,6 +26,6 @@
 固定提供（僅文字，不執行）：
 
 - client:
-  - `powershell -ExecutionPolicy Bypass -File .agent/skills/pa-local-steam-paths/scripts/deploy-mod.ps1 -SourceModPath "<generated_mod_path>" -Context client -EnvFilePath ".agent/env/pa-local.env"`
+  - `powershell -ExecutionPolicy Bypass -File .agent/skills/pa-local-steam-paths/scripts/deploy-mod.ps1 -Context client -EnvFilePath ".agent/env/pa-local.env"`
 - server:
-  - `powershell -ExecutionPolicy Bypass -File .agent/skills/pa-local-steam-paths/scripts/deploy-mod.ps1 -SourceModPath "<generated_mod_path>" -Context server -EnvFilePath ".agent/env/pa-local.env"`
+  - `powershell -ExecutionPolicy Bypass -File .agent/skills/pa-local-steam-paths/scripts/deploy-mod.ps1 -Context server -EnvFilePath ".agent/env/pa-local.env"`

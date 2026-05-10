@@ -18,19 +18,25 @@ description: 以本機 env 設定檔管理 Planetary Annihilation (Steam) 的安
 
 ## 執行固定部署
 
-1. 準備來源資料夾，確保其根層包含 `modinfo.json`。
-2. 執行 `scripts/deploy-mod.ps1`，指定來源路徑與目標 context。
-3. 由 `modinfo.json.identifier` 或手動指定 identifier 建立目的資料夾。
+1. 將要部署的 MOD 放在 repo 的 `mods/` 底下（每個 MOD 根層需包含 `modinfo.json`）。
+2. 執行 `scripts/deploy-mod.ps1`，指定目標 context。
+3. 腳本會自動搜尋 `mods/` 底下所有可部署 MOD，並以各自 `modinfo.json.identifier` 建立目的資料夾。
 4. 清空舊目標後覆蓋複製，保持部署結果一致。
 
 ## 指令
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .agent/skills/pa-local-steam-paths/scripts/deploy-mod.ps1 -SourceModPath "<mod-folder>" -Context client -EnvFilePath ".agent/env/pa-local.env"
+powershell -ExecutionPolicy Bypass -File .agent/skills/pa-local-steam-paths/scripts/deploy-mod.ps1 -Context client -EnvFilePath ".agent/env/pa-local.env"
 ```
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .agent/skills/pa-local-steam-paths/scripts/deploy-mod.ps1 -SourceModPath "<mod-folder>" -Context server -EnvFilePath ".agent/env/pa-local.env"
+powershell -ExecutionPolicy Bypass -File .agent/skills/pa-local-steam-paths/scripts/deploy-mod.ps1 -Context server -EnvFilePath ".agent/env/pa-local.env"
+```
+
+若只部署單一 MOD（可選）：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .agent/skills/pa-local-steam-paths/scripts/deploy-mod.ps1 -SourceModPath "mods/com.pa.waynechen251.gw-singularity-tech" -Context client -EnvFilePath ".agent/env/pa-local.env"
 ```
 
 ## 讀取遊戲原始檔參考
