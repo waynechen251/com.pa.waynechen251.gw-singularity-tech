@@ -8,7 +8,7 @@
 
 ## Agent 啟動順序(必讀)
 
-1. [.agent/catalog.json](.agent/catalog.json) — 機械可讀索引(9 個 entrypoint + 3 個 template,含 intents 與 tags)
+1. [.agent/catalog.json](.agent/catalog.json) — 機械可讀索引(33 個 entrypoint + 3 個 template,含 intents 與 tags)
 2. [.agent/agent-playbook.md](.agent/agent-playbook.md) — 任務路由、標準輸出、快速檢查清單
 3. 依任務類型進入對應 [workflow](.agent/workflows/)
 
@@ -29,6 +29,7 @@
 - 想理解 PA modding 規則 → [.agent/knowledge/pa-modding-core.md](.agent/knowledge/pa-modding-core.md)
 - 想做 UI / 場景 hook → [.agent/knowledge/ui-and-api.md](.agent/knowledge/ui-and-api.md) + [.agent/knowledge/scene-models.md](.agent/knowledge/scene-models.md)
 - 想改某單位的某屬性 → [.agent/glossary/zh-unit-terms.md](.agent/glossary/zh-unit-terms.md) → [.agent/knowledge/unit-spec-fields.md](.agent/knowledge/unit-spec-fields.md) → [.agent/cookbook/unit-balance-tweaks.md](.agent/cookbook/unit-balance-tweaks.md)
+- 想做**全新單位**(含 3D 建模 / 動畫) → [.agent/workflows/create-new-unit-mod.md](.agent/workflows/create-new-unit-mod.md) (hub:[.agent/knowledge/new-unit-creation.md](.agent/knowledge/new-unit-creation.md)、模型:[.agent/knowledge/unit-model-papa.md](.agent/knowledge/unit-model-papa.md)、動畫:[.agent/knowledge/unit-animation.md](.agent/knowledge/unit-animation.md))
 - 想做某 UI 行為 → [.agent/glossary/zh-ui-terms.md](.agent/glossary/zh-ui-terms.md) → [.agent/cookbook/chat-alert.md](.agent/cookbook/chat-alert.md) 或 [.agent/cookbook/ui-hook-recipes.md](.agent/cookbook/ui-hook-recipes.md)
 - 想做 Galactic War 卡片 → [.agent/knowledge/galactic-war-cards.md](.agent/knowledge/galactic-war-cards.md) + [.agent/samples/gw-cards/_skeleton.md](.agent/samples/gw-cards/_skeleton.md)
 - 想對話式產出 MOD 草稿 → [.agent/skills/pa-conversational-mod-template/SKILL.md](.agent/skills/pa-conversational-mod-template/SKILL.md)

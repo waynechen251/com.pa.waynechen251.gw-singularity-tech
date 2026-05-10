@@ -100,6 +100,14 @@ pa/units/
 - **Ammo 路徑**：unit 的 `tools[].weapon.ammo_id` 指向 `pa/ammo/<id>/<id>.json`，傷害數值改在那邊。
 - **DLC 與社群 mod**：Titans 與其他 DLC 會在原路徑中加入新單位；社群 mod（Legion / Nova / Statera）有自己的 unit set，識別前綴各異。
 
+## 全新單位資料夾佈局
+
+若要**建立全新 identifier 的單位**(而非 override 既有單位),mod 內單位資料夾佈局見:
+
+- 完整資產樹 (papa / 紋理 / 動畫):[`_papa-asset-layout.md`](./_papa-asset-layout.md)
+- from-scratch 的根 JSON 骨架:[`_new-unit-skeleton.md`](./_new-unit-skeleton.md)
+- 完整流程:[`../../workflows/create-new-unit-mod.md`](../../workflows/create-new-unit-mod.md)
+
 ## 取得最新目錄樹
 
 PowerShell（建議用 [pa-local-steam-paths skill](../../skills/pa-local-steam-paths/SKILL.md) 解 PA Data 路徑）：

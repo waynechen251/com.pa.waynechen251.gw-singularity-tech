@@ -1,4 +1,14 @@
-# Workflow: 建立 Server Unit MOD
+# Workflow: 建立 Server Unit MOD（Override 既有單位）
+
+## 適用範圍
+
+本檔聚焦在**修改既有單位**(shadow override)的流程:HP / 射程 / 速度 / 武器數值等調整。
+
+| 需求 | 走哪個 workflow |
+| --- | --- |
+| **改既有單位數值** | **本檔** |
+| 改既有單位的 model.filename(換貼圖) | 本檔 |
+| 建立**全新 identifier 的單位**(新模型 / 新動畫 / 變體) | [create-new-unit-mod.md](./create-new-unit-mod.md) |
 
 ## 目標
 

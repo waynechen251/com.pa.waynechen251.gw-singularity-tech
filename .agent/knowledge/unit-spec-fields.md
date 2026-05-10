@@ -4,6 +4,8 @@
 > 適用對象：玩家用自然語言提需求（「想改某單位的 X」），AI 需要把需求翻譯成具體 JSON 路徑與修改值。
 > 注意：PA 仍有更新版，實際數值請以玩家本機 `media/pa/units/...` 原檔為準。本檔只列 modding 常用欄位。
 
+> **視角註記**：本檔以「override 既有單位的數值」為主視角，聚焦於玩家最常改的欄位。若要從零建立**全新單位**，涉及的 `unit_types[]` / `buildable_types` / `model.filename` / `model.animations` / `model.animtree` 等「from-scratch 才會碰」的欄位，改在 [`unit-types-and-buildable.md`](./unit-types-and-buildable.md)、[`unit-model-papa.md`](./unit-model-papa.md)、[`unit-animation.md`](./unit-animation.md)；完整 root 骨架見 [`../samples/units/_new-unit-skeleton.md`](../samples/units/_new-unit-skeleton.md)。
+
 ## 1) Unit JSON 結構總覽
 
 一個典型 unit spec 的頂層 section（並非全部 unit 都有所有 section）：
