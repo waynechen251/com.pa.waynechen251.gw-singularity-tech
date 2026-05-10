@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "project": "Planetary Annihilation Modding Knowledge Base",
   "updated_at": "2026-05-09",
   "entrypoints": [
@@ -75,6 +75,58 @@
       "zh_aliases": ["戰役", "GW", "卡片", "卡牌", "單機"]
     },
     {
+      "id": "pa-new-unit-creation",
+      "path": ".agent/knowledge/new-unit-creation.md",
+      "intents": [
+        "create_new_unit",
+        "from_scratch_unit",
+        "new_unit_asset_checklist",
+        "unit_dependency_chain"
+      ],
+      "tags": ["unit", "new", "from-scratch", "knowledge", "hub"],
+      "zh_aliases": ["新單位", "從零做", "全新單位", "建立單位"]
+    },
+    {
+      "id": "pa-unit-model-papa",
+      "path": ".agent/knowledge/unit-model-papa.md",
+      "intents": [
+        "papa_format",
+        "unit_3d_modeling",
+        "bone_naming",
+        "texture_channels",
+        "papatran_pipeline",
+        "blender_exporter"
+      ],
+      "tags": ["unit", "model", "papa", "3d", "blender", "texture", "low-confidence", "needs-sampling"],
+      "zh_aliases": ["建模", "模型", "papa", "骨骼", "貼圖", "紋理"]
+    },
+    {
+      "id": "pa-unit-animation",
+      "path": ".agent/knowledge/unit-animation.md",
+      "intents": [
+        "unit_animation",
+        "animtree",
+        "animation_states",
+        "blend_transition",
+        "aim_blend",
+        "recoil"
+      ],
+      "tags": ["unit", "animation", "animtree", "blend", "low-confidence", "needs-sampling"],
+      "zh_aliases": ["動畫", "骨架動畫", "瞄準動畫", "後座力", "死亡動畫"]
+    },
+    {
+      "id": "pa-unit-types-buildable",
+      "path": ".agent/knowledge/unit-types-and-buildable.md",
+      "intents": [
+        "unit_types_tags",
+        "buildable_types_expression",
+        "factory_buildable_list",
+        "tech_level_routing"
+      ],
+      "tags": ["unit", "unit_types", "buildable_types", "factory", "tags"],
+      "zh_aliases": ["標籤", "可建造", "工廠列表", "科技樹", "build bar"]
+    },
+    {
       "id": "workflow-client-ui",
       "path": ".agent/workflows/create-client-ui-mod.md",
       "intents": [
@@ -93,8 +145,20 @@
         "unit_balance_mod",
         "unit_spec_override"
       ],
-      "tags": ["workflow", "server", "units"],
-      "zh_aliases": ["server mod", "改單位", "平衡"]
+      "tags": ["workflow", "server", "units", "override"],
+      "zh_aliases": ["server mod", "改單位", "平衡", "覆寫"]
+    },
+    {
+      "id": "workflow-new-unit",
+      "path": ".agent/workflows/create-new-unit-mod.md",
+      "intents": [
+        "build_new_unit_mod",
+        "from_scratch_unit_workflow",
+        "unit_modeling_workflow",
+        "unit_animation_workflow"
+      ],
+      "tags": ["workflow", "server", "units", "new", "from-scratch", "modeling", "animation"],
+      "zh_aliases": ["做新單位", "全新單位流程", "建模流程", "新坦克"]
     },
     {
       "id": "workflow-release",
@@ -177,6 +241,30 @@
       "zh_aliases": ["範例", "片段", "射程", "建造速度", "加血", "改單位"]
     },
     {
+      "id": "cookbook-new-unit-recipes",
+      "path": ".agent/cookbook/new-unit-recipes.md",
+      "intents": [
+        "recipe_snippet",
+        "clone_existing_unit",
+        "factory_attach_new_unit",
+        "icon_localization_hook"
+      ],
+      "tags": ["cookbook", "unit", "new", "clone", "snippet"],
+      "zh_aliases": ["克隆單位", "複製單位", "掛入工廠", "新單位範例"]
+    },
+    {
+      "id": "cookbook-papa-toolchain",
+      "path": ".agent/cookbook/papa-toolchain-cheatsheet.md",
+      "intents": [
+        "papatran_cli",
+        "blender_papa_io",
+        "ptexedit_channel_pack",
+        "papa_compile_error"
+      ],
+      "tags": ["cookbook", "papa", "toolchain", "cli", "blender", "low-confidence"],
+      "zh_aliases": ["papatran", "Blender 匯出", "紋理編譯", "papa 工具"]
+    },
+    {
       "id": "cookbook-chat-alert",
       "path": ".agent/cookbook/chat-alert.md",
       "intents": [
@@ -223,6 +311,17 @@
       "zh_aliases": ["大廳", "戰場", "設定", "聊天", "建造列表", "小地圖"]
     },
     {
+      "id": "glossary-zh-modeling",
+      "path": ".agent/glossary/zh-modeling-terms.md",
+      "intents": [
+        "zh_term_translate",
+        "modeling_chinese_lookup",
+        "animation_chinese_lookup"
+      ],
+      "tags": ["glossary", "zh", "modeling", "animation", "terminology"],
+      "zh_aliases": ["建模術語", "動畫術語", "骨骼", "網格", "UV"]
+    },
+    {
       "id": "samples-units-skeleton",
       "path": ".agent/samples/units/_skeleton.md",
       "intents": [
@@ -231,6 +330,26 @@
       ],
       "tags": ["samples", "unit", "schema", "outline"],
       "zh_aliases": ["骨架", "結構", "範例結構"]
+    },
+    {
+      "id": "samples-new-unit-skeleton",
+      "path": ".agent/samples/units/_new-unit-skeleton.md",
+      "intents": [
+        "new_unit_schema_outline",
+        "from_scratch_root_json"
+      ],
+      "tags": ["samples", "unit", "new", "schema", "outline"],
+      "zh_aliases": ["新單位骨架", "從零單位 JSON"]
+    },
+    {
+      "id": "samples-papa-asset-layout",
+      "path": ".agent/samples/units/_papa-asset-layout.md",
+      "intents": [
+        "papa_asset_directory_pattern",
+        "model_texture_naming"
+      ],
+      "tags": ["samples", "unit", "papa", "asset", "layout"],
+      "zh_aliases": ["資產佈局", "papa 路徑", "貼圖命名"]
     },
     {
       "id": "samples-units-index",

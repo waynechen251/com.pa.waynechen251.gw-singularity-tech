@@ -6,7 +6,8 @@
 - 要建立新 mod：先讀 `.agent/knowledge/pa-modding-core.md`
 - 要做 UI/場景 hook：再讀 `.agent/knowledge/ui-and-api.md`
 - 要做 client UI mod：執行 `.agent/workflows/create-client-ui-mod.md`
-- 要做 server 單位平衡：執行 `.agent/workflows/create-server-unit-mod.md`
+- 要做 server 單位平衡（改既有單位數值）：執行 `.agent/workflows/create-server-unit-mod.md`
+- 要做**全新單位**（新 identifier / 新模型 / 新動畫）：執行 `.agent/workflows/create-new-unit-mod.md`
 - 要做 Galactic War 卡片 / 戰役內容：讀 `.agent/knowledge/galactic-war-cards.md`
 - 要發佈：執行 `.agent/workflows/test-package-release.md`
 
@@ -20,7 +21,8 @@
 - **想做某 UI 行為**（例「玩家加入響鈴」「警告播音」）：依序使用
   1. `.agent/knowledge/scene-models.md`（拿可 hook 的 observable）
   2. `.agent/cookbook/chat-alert.md` 或 `.agent/cookbook/ui-hook-recipes.md`（套用對應 .js 模板）
-- **找原始 unit JSON 結構**：`.agent/samples/units/_skeleton.md`（骨架）+ `.agent/samples/units/_index.md`（目錄索引）
+- **想做新單位但不會建模**（例「我要做新坦克但沿用既有模型」）：套 `.agent/cookbook/new-unit-recipes.md` 的 R1 克隆情境;若要全新建模見 `.agent/knowledge/unit-model-papa.md` + `.agent/cookbook/papa-toolchain-cheatsheet.md`
+- **找原始 unit JSON 結構**：`.agent/samples/units/_skeleton.md`（override 視角骨架）;新單位 from-scratch 用 `.agent/samples/units/_new-unit-skeleton.md`;資產目錄佈局見 `.agent/samples/units/_papa-asset-layout.md`
 - **找原始 GW 卡結構**：`.agent/samples/gw-cards/_skeleton.md`
 - **找 model.* 名單供 grep**：`.agent/samples/scenes/scenes-snapshot.md`
 
