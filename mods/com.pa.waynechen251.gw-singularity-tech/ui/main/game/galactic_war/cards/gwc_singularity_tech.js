@@ -150,7 +150,7 @@ define([
             file: '/pa/tools/commander_build_arm/commander_build_arm.json',
             path: 'construction_demand.metal',
             op: 'replace',
-            value: 80
+            value: 100
         }
     ];
 
